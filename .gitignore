@@ -1,0 +1,40 @@
+# Python/cache artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local source materials. Keep only directory documentation.
+inputs/*
+!inputs/README.md
+
+# Generated notes and outputs. Keep only directory documentation.
+outputs/*
+!outputs/README.md
+
+# Private records. Keep only directory documentation.
+records/originals/*
+!records/originals/README.md
+records/transcripts/*
+!records/transcripts/README.md
+records/preprocessed/*
+!records/preprocessed/README.md
+records/metadata/*
+!records/metadata/README.md
+
+# User-generated artifacts. Keep only directory documentation.
+artifacts/*/*
+!artifacts/*/README.md
+
+# Resource-library contents can contain private learning notes.
+library/summary-records/*/*
+!library/summary-records/*/README.md
+library/smart-categories/*
+!library/smart-categories/README.md
+
+# Personal collections and exploration lists may contain private sources.
+collections/*
+!collections/README.md
+explore/hot/*
+!explore/hot/README.md
+explore/subscriptions/*
+!explore/subscriptions/README.md

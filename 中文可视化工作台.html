@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>本地资料解析工作台</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #1d2433;
+      --muted: #667085;
+      --line: #d9dee7;
+      --entry: #235789;
+      --record: #7a4f01;
+      --output: #256d3d;
+      --artifact: #6f3cc3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      padding: 28px 32px 18px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--line);
+    }
+    h1, h2, h3 { margin: 0; }
+    h1 { font-size: 28px; }
+    header p { margin: 8px 0 0; color: var(--muted); }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      gap: 18px;
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(150px, 1fr));
+      gap: 12px;
+      align-items: stretch;
+    }
+    .step {
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--entry);
+      border-radius: 8px;
+      padding: 14px;
+      min-height: 124px;
+      background: #fff;
+    }
+    .step.record { border-top-color: var(--record); }
+    .step.output { border-top-color: var(--output); }
+    .step.artifact { border-top-color: var(--artifact); }
+    .step h3 { font-size: 16px; margin-bottom: 6px; }
+    .path {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 3px 6px;
+      border-radius: 5px;
+      background: #eef2f7;
+      color: #344054;
+      font-family: Consolas, monospace;
+      font-size: 13px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fff;
+    }
+    .item strong { display: block; margin-bottom: 4px; }
+    .item span { color: var(--muted); font-size: 14px; }
+    code {
+      background: #eef2f7;
+      border-radius: 5px;
+      padding: 2px 5px;
+      font-family: Consolas, monospace;
+    }
+    pre {
+      overflow: auto;
+      background: #111827;
+      color: #f9fafb;
+      border-radius: 8px;
+      padding: 14px;
+      white-space: pre-wrap;
+    }
+    @media (max-width: 900px) {
+      .flow, .grid { grid-template-columns: 1fr; }
+      header { padding: 22px 18px 14px; }
+      main { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>本地资料解析工作台</h1>
+    <p>中文入口导航。底层目录保持英文，日常操作按中文模块理解。</p>
+  </header>
+  <main>
+    <section>
+      <h2>处理流程</h2>
+      <div class="flow" aria-label="资料处理流程">
+        <div class="step">
+          <h3>入口：待处理资料</h3>
+          <p>字幕、转写稿、网页正文、会议记录、课程材料。</p>
+          <span class="path">inputs/</span>
+        </div>
+        <div class="step record">
+          <h3>存档：原文与转写</h3>
+          <p>保留原始依据，不只保存总结。</p>
+          <span class="path">records/</span>
+        </div>
+        <div class="step record">
+          <h3>存档：预处理稿</h3>
+          <p>清洗字幕、合并短行、保留关键时间戳。</p>
+          <span class="path">records/preprocessed/</span>
+        </div>
+        <div class="step output">
+          <h3>出口：最终笔记</h3>
+          <p>普通总结、详细页、时间线、关键观点。</p>
+          <span class="path">outputs/</span>
+        </div>
+        <div class="step artifact">
+          <h3>出口：二次产出</h3>
+          <p>高光、公众号图文、改写文章、AI 对话。</p>
+          <span class="path">artifacts/</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>中文模块对照</h2>
+      <div class="grid">
+        <div class="item"><strong>原文记录</strong><span><code>records/originals/</code> 保存粘贴原文、网页正文、会议记录。</span></div>
+        <div class="item"><strong>转写稿</strong><span><code>records/transcripts/</code> 保存字幕、逐字稿、口播稿。</span></div>
+        <div class="item"><strong>预处理稿</strong><span><code>records/preprocessed/</code> 保存清洗后的中间稿。</span></div>
+        <div class="item"><strong>最终笔记</strong><span><code>outputs/</code> 保存详细页、普通总结等。</span></div>
+        <div class="item"><strong>高光笔记</strong><span><code>artifacts/highlight-notes/</code> 保存默认高光、情绪高点、爆款片段。</span></div>
+        <div class="item"><strong>公众号图文</strong><span><code>artifacts/wechat-articles/</code> 保存图文草稿和配图清单。</span></div>
+        <div class="item"><strong>知识库</strong><span><code>library/</code> 管理收藏、待整理、待办、闪念。</span></div>
+        <div class="item"><strong>合集</strong><span><code>collections/</code> 按课程、项目、主题组织。</span></div>
+        <div class="item"><strong>探索</strong><span><code>explore/</code> 保存订阅源和热门资料清单。</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>推荐对话入口</h2>
+      <pre>使用 auto-parse-materials 解析下面资料，保存原文记录和转写稿，再问我生成哪种产出。</pre>
+      <p>如果已经确定目标，可以说：<code>直接生成详细页 + 高光笔记</code>。</p>
+    </section>
+  </main>
+</body>
+</html>

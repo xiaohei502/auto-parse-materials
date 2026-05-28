@@ -1,0 +1,7 @@
+interface:
+  display_name: "自动解析本地资料"
+  short_description: "把本地字幕、转写稿和笔记清洗成结构化 Markdown。"
+  default_prompt: "使用 $auto-parse-materials 解析我放在 inputs/ 里的字幕、转写稿或笔记，并生成 BibiGPT 式 Markdown 笔记。"
+
+policy:
+  allow_implicit_invocation: true
